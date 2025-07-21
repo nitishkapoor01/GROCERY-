@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <!-- FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Loader Fullscreen */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #F5F7FA;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #e9f5e9;
+            border-top: 6px solid #8A4AF3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Page Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e9f5e9, #f7f9f7);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 50px;
+            padding: 20px;
+            width: 90%;
+            max-width: 2700px;
+            margin-left: 40px;
+            margin-right: 70px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .container.active {
+            opacity: 1;
+        }
+
+        .cardz {
+            width: 190px;
+            height: 254px;
+            padding: 0.8em;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.086);
+            border-radius: 20px;
+        }
+
+        .card-container {
+            position: absolute;
+            width: 150px;
+            height: 130px;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background: rgba(244, 205, 119, 0.408);
+            backdrop-filter: blur(10px);
+            border-radius: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 85%;
+            transition: transform 1s, box-shadow 1s;
+        }
+
+        .card-container img {
+            position: absolute;
+            top: 47%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 1s;
+            z-index: 2;
+        }
+
+        .card-container:hover .card {
+            transform: translateZ(100px) rotateX(75deg);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-container:hover img {
+            transform: translate(-50%, -100%) translateZ(200px);
+        }
+
+        .card-info {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            right: 10px;
+            transform: translateY(-8%);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+        }
+
+        .text-title {
+            font-weight: 900;
+            font-size: 1.2em;
+            color: #000;
+            margin: 0;
+        }
+
+        .text-body {
+            font-size: 0.9em;
+            color: #333;
+            margin: 0;
+        }
+
+        .cardz-footer {
+            position: absolute;
+            top: 231px;
+            left: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .CartBtn {
+            width: 68px;
+            height: 37px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(255, 208, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition-duration: 0.5s;
+            overflow: hidden;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+            position: absolute;
+            bottom: 5px;
+            left: 80%;
+            transform: translateX(-50%);
+        }
+
+        .IconContainer {
+            position: absolute;
+            left: -58px;
+            width: 30px;
+            height: 30px;
+            background-color: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 2;
+            transition-duration: 0.5s;
+        }
+
+        .texts {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(17, 17, 17);
+            z-index: 1;
+            transition-duration: 0.5s;
+            font-size: 1.04em;
+            font-weight: 600;
+        }
+
+        .CartBtn:hover .IconContainer {
+            transform: translateX(58px);
+            border-radius: 40px;
+        }
+
+        .CartBtn:hover .texts {
+            transform: translate(10px, 0px);
+        }
+
+        .CartBtn:active {
+            transform: scale(0.95);
+        }
+
+        /* Attractive Notification Styling with Icon, Color, and Bounce */
+        .notification {
+            position: fixed;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6f61, #e63946); /* Coral gradient */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+            font-weight: 500;
+            border-left: 5px solid #fff;
+            transition: all 0.4s ease;
+            min-width: 200px; /* Fixed width for consistency */
+        }
+
+        .notification::before {
+            content: "\f07a"; /* FontAwesome cart icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 10px;
+        }
+
+        @keyframes slideIn {
+            0% { top: -100px; opacity: 0; }
+            70% { top: 25px; opacity: 1; }
+            100% { top: 20px; opacity: 1; }
+        }
+
+        .notification.show {
+            display: block;
+            animation: slideIn 0.4s ease forwards;
+        }
+
+        /* CART BUTTON */
+        .btn1-cart {
+            position: fixed;
+            top: 7px;
+            right: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            background-color: transparent;
+            z-index: 999; /* Ensure it stays above other elements */
+        }
+
+        .btn1-cart::after {
+            content: attr(data-quantity);
+            width: fit-content;
+            height: fit-content;
+            position: absolute;
+            font-size: 15px;
+            color: rgb(255, 0, 0);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            opacity: 0;
+            visibility: hidden;
+            transition: .2s linear;
+            top: 115%;
+        }
+
+        .icon-cart {
+            width: 24.38px;
+            height: 30.52px;
+            transition: .2s linear;
+        }
+
+        .icon-cart path {
+            fill: rgb(240, 8, 8);
+            transition: .2s linear;
+        }
+
+        .btn1-cart:hover > .icon-cart {
+            transform: scale(1.2);
+        }
+
+        .btn1-cart:hover > .icon-cart path {
+            fill: rgb(186, 34, 233);
+        }
+
+        .btn1-cart:hover::after {
+            visibility: visible;
+            opacity: 1;
+            top: 105%;
+        }
+
+        .quantity {
+            display: none;
+            
+        }
+
+        /* BACK BUTTON */
+        .btn-back {
+            position: fixed;
+            top: 7px;
+            left: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            z-index: 999; /* Ensure it stays above other elements */
+        }
+
+        .btn-back i {
+            font-size: 20px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: scale(1.1);
+            background-color: #f0f0f0;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-back:hover i {
+            color: #8A4AF3; /* Match the loader color for consistency */
+        }
+
+        .btn-back:active {
+            transform: scale(0.95);
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Back Button in Top-Left -->
+    <button class="btn-back" onclick="window.history.back()">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <!-- Cart Button in Top-Right -->
+    <a href="cart.html">
+        <button class="btn1-cart">
+            <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38" xmlns="http://www.w3.org/2000/svg">
+                <title>icon-cart</title>
+                <path transform="translate(-3.62 -0.85)" d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0"></path>
+            </svg>
+            <span class="quantity"></span>
+        </button>
+    </a>
+
+    <!-- Product Container -->
+    <div class="container" id="productContainer"></div>
+
+    <script>
+        // Wait for 1.2 seconds before showing content and hiding loader
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                document.getElementById("loader").style.opacity = "0";
+                setTimeout(function () {
+                    document.getElementById("loader").style.display = "none";
+                    document.querySelector(".container").classList.add("active");
+                }, 500);
+            }, 200);
+        });
+
+        const productContainer = document.getElementById("productContainer");
+
+        // Array of 30 different placeholder image URLs
+        const imageUrls = [
+            "image/vecteezy_apple-with_24865855.png",
+            "image/vecteezy_bunch-of-bananas_12909735.png",
+            "image/carrot.png",
+            "image/vecteezy_hyper-realistic-tomato-with-glossy-skin-and-juicy-slice-in_55130510.png",
+            "image/vecteezy_potatos-isolated-on-transparent-background_45871586.png",
+            "image/vecteezy_ai-generated-onion-cut-in-half-png-isolated-on-transparent_38015653.png",
+            "image/vecteezy_green-cucumber-with-slices-and-leaf-on-transparent-background_51338899.png",
+            "image/vecteezy_fresh-red-ripe-pepper-with-leaves-isolated-on-transparent_45871377.png",
+            "image/vecteezy_bundle-of-fresh-spinach-png-with-ai-generated_34616684.png",
+            "image/vecteezy_a-green-and-fresh-broccoli-vegetable-isolated_45808232.png",
+            "image/lettecue.png",
+            "image/vecteezy_garlic-png-with-ai-generated_33303214.png",
+            "image/vecteezy_ginger-png-with-ai-generated_33302518.png",
+            "image/mushroom.png",
+            "image/vecteezy_dark-green-zucchini-with-a-firm-texture-and-tiny-speckles_55930982.png",
+            "image/vecteezy_two-fresh-eggplants-isolated_48470207.png",
+            "image/vecteezy_fresh-corn-on-the-cob-with-vibrant-yellow-kernels-and-leafy_55237237.png",
+            "image/vecteezy_plate-of-green-peas-isolated-from-background_47553679.png",
+            "image/vecteezy_crispy-chinese-long-beans-ready-for-cooking_54905083.png",
+            "image/vecteezy_ai-generated-a-cabbage-png_36283620.png",
+            "image/cauliflower.png",
+            "image/—Pngtree—viet nam purple sweet potato_5648739.png",
+            "image/—Pngtree—photo of avocado_8939900.png",
+            "image/vecteezy_ai-generated-realistic-fresh-orange-slice_41306465.png",
+            "image/grape-3330199.png",
+            "image/Strawberries.png",
+            "image/Blueberries-PNG-Photos.png",
+            "image/Loaf-Bread-PNG-Image.png",
+            "image/Almond-Milk-Transparent-PNG.png",
+            "image/Eggs-PNG-Clipart.png"
+        ];
+
+        // Array of 30 random grocery item names
+        const productNames = [
+            "Apples", "Bananas", "Carrots", "Tomatoes", "Potatoes", "Onions", "Cucumbers",
+            "Bell Peppers", "Spinach", "Broccoli", "Lettuce", "Garlic", "Ginger", "Mushrooms",
+            "Zucchini", "Eggplant", "Corn", "Peas", "Green Beans", "Cabbage", "Cauliflower",
+            "Sweet Potatoes", "Avocados", "Oranges", "Grapes", "Strawberries", "Blueberries",
+            "Bread", "Milk", "Eggs"
+        ];
+
+        // Array of 30 different descriptions
+        const productDescriptions = [
+            "Classic cola flavor", "Refreshing lemon-lime", "Zesty orange soda", "Citrus burst drink",
+            "Clear lemon-lime soda", "Bold citrus flavor", "Strong cola kick", "Light lemon refreshment",
+            "Original cola taste", "Zero sugar cola", "Sugar-free cola", "Tonic water classic",
+            "Unique spicy soda", "Sweet root beer", "Crisp ginger taste", "Fresh lemon drink",
+            "Bright orange fizz", "Sweet grape soda", "Creamy soda delight", "Cherry cola twist",
+            "Vanilla cola blend", "Berry fizz delight", "Raspberry soda pop", "Tropical mango soda",
+            "Pineapple soda refresh", "Watermelon drink", "Lychee soda sweetness", "Guava juice refresh",
+            "Passion fruit soda", "Blueberry soda pop"
+        ];
+
+        // Array of 30 different prices
+        const productPrices = [
+            "$1.99", "$2.49", "$1.79", "$2.29", "$1.89", "$2.59", "$1.69", "$2.39", "$1.99",
+            "$2.99", "$2.19", "$3.29", "$1.49", "$2.79", "$2.09", "$1.59", "$2.69", "$1.39",
+            "$2.89", "$2.49", "$3.19", "$1.29", "$2.99", "$2.59", "$1.79", "$3.49", "$2.29",
+            "$1.99", "$3.09", "$2.39"
+        ];
+
+        // Array of 30 different widths for images (in percentage)
+        const imageWidths = [
+            "40%", "70%", "80%", "55%", "60%", "35%", "48%", "52%", "43%", "58%", "42%", "47%",
+            "53%", "38%", "56%", "44%", "49%", "51%", "46%", "54%", "41%", "59%", "37%", "50%",
+            "45%", "55%", "40%", "48%", "52%", "43%"
+        ];
+
+        // Generate product data with unique images, names, descriptions, prices, and widths
+        const productData = Array.from({ length: 30 }, (_, index) => ({
+            name: productNames[index],
+            description: productDescriptions[index],
+            price: productPrices[index],
+            imageSrc: imageUrls[index],
+            imageWidth: imageWidths[index]
+        }));
+
+        // Function to add product to cart and show notification vertically
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.name === product.name);
+            if (existingItem) {
+                existingItem.quantity = (existingItem.quantity || 1) + 1;
+            } else {
+                product.quantity = 1;
+                cart.push(product);
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Update the cart button quantity
+            updateCartQuantity();
+
+            // Create a new notification element
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = `${product.name} added to cart!`;
+
+            // Calculate position based on existing notifications
+            const existingNotifications = document.querySelectorAll('.notification.show');
+            const offset = existingNotifications.length * 60; // 50px height + 10px gap
+            notification.style.top = `${20 + offset}px`;
+
+            // Append to body
+            document.body.appendChild(notification);
+
+            // Show notification
+            notification.classList.add('show');
+
+            // Remove after 2.5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 400); // Wait for animation to finish
+            }, 2500);
+        }
+
+        // Function to update the cart quantity display
+        function updateCartQuantity() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalQuantity = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            const cartButton = document.querySelector('.btn1-cart');
+            cartButton.setAttribute('data-quantity', totalQuantity || '0');
+        }
+
+        // Initial update of cart quantity on page load
+        window.addEventListener("load", function () {
+            updateCartQuantity();
+        });
+
+        // Render products and add event listeners
+        productData.forEach(product => {
+            const card = document.createElement("div");
+            card.classList.add("cardz");
+            card.innerHTML = `
+                <div class="card-container">
+                    <img src="${product.imageSrc}" alt="" style="width: ${product.imageWidth}">
+                    <div class="card"></div>
+                </div>
+                <div class="card-info">
+                    <p class="text-title">${product.name}</p>
+                    <p class="text-body">${product.description}</p>
+                </div>
+                <div class="cardz-footer">
+                    <span class="text-title">${product.price}</span>
+                </div>
+                <button class="CartBtn">
+                    <span class="IconContainer"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
+                    </span>
+                    <p class="texts">CART</p>
+                </button>
+            `;
+            productContainer.appendChild(card);
+
+            // Add event listener to the "Add to Cart" button
+            const cartBtn = card.querySelector('.CartBtn');
+            cartBtn.addEventListener('click', () => addToCart(product));
+        });
+    </script>
+</body>
+</html>

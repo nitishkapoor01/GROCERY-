@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stunning Cart Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="cart-container">
+        <h2>🛒 Your Cart</h2>
+        <div class="cart-item">
+            <img src="https://via.placeholder.com/100" alt="Product Image">
+            <div class="item-details">
+                <h3>Luxury Chair</h3>
+                <p>$120.00</p>
+                <div class="quantity-control">
+                    <button class="decrease">-</button>
+                    <span class="quantity">1</span>
+                    <button class="increase">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="cart-item">
+            <img src="https://via.placeholder.com/100" alt="Product Image">
+            <div class="item-details">
+                <h3>Modern Table</h3>
+                <p>$80.00</p>
+                <div class="quantity-control">
+                    <button class="decrease">-</button>
+                    <span class="quantity">1</span>
+                    <button class="increase">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="coupon-section">
+            <input type="text" id="coupon" placeholder="Enter Coupon Code">
+            <button id="apply-coupon">Apply</button>
+        </div>
+        <div class="cart-summary">
+            <p>Subtotal: <span id="subtotal">$200.00</span></p>
+            <p>Discount: <span id="discount">$0.00</span></p>
+            <p>Total: <span id="total">$200.00</span></p>
+        </div>
+        <button id="checkout" class="checkout-btn">Proceed to Checkout</button>
+    </div>
+</body>
+</html>

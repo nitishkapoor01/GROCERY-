@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshMart | Site Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e9f5e9, #f7f9f7);
+            overflow: hidden;
+        }
+        .full-page-container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        h4 {
+            color: #28a745;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-align: center;
+        }
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border: 3px solid #28a745;
+            width: 100%;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Prevent overflow outside card */
+        }
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .row {
+            flex: 1;
+            height: 100%;
+            margin: 0;
+        }
+        .col-md-3 {
+            height: 100%;
+            padding: 0;
+            background: #f9f9f9;
+            border-right: 1px solid rgba(40, 167, 69, 0.2);
+        }
+        .col-md-9 {
+            height: 100%;
+            padding: 0;
+        }
+        .list-group {
+            height: 100%;
+            overflow-y: auto; /* Scrollable sidebar */
+            padding: 10px 0;
+        }
+        .list-group-item {
+            padding: 1.2rem 1.5rem;
+            border: none;
+            transition: all 0.3s ease;
+            color: #4e5155;
+            font-size: 16px;
+        }
+        .list-group-item:hover {
+            background: #f1f9f1;
+            transform: translateX(10px);
+        }
+        .list-group-item.active {
+            background: #28a745 !important;
+            color: #fff !important;
+            font-weight: 600;
+        }
+        .tab-content {
+            padding: 30px;
+            height: 100%;
+            overflow-y: auto; /* Scrollable content area */
+        }
+        .tab-pane {
+            animation: fadeInTab 0.5s ease-in-out;
+        }
+        @keyframes fadeInTab {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            padding: 12px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+        }
+        .btn {
+            border-radius: 10px;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background: #28a745;
+            border: none;
+        }
+        .btn-primary:hover {
+            background: #218838;
+            transform: translateY(-3px);
+        }
+        .btn-default {
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #4e5155;
+        }
+        .btn-default:hover {
+            background: #f1f9f1;
+            transform: translateY(-3px);
+        }
+        .btn-outline-primary {
+            border-color: #28a745;
+            color: #28a745;
+        }
+        .btn-outline-primary:hover {
+            background: #28a745;
+            color: #fff;
+        }
+        .media img {
+            border-radius: 50%;
+            border: 4px solid #28a745;
+            transition: transform 0.3s ease;
+            width: 100px;
+        }
+        .media img:hover {
+            transform: scale(1.15);
+        }
+        .alert {
+            border-radius: 10px;
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+        }
+        .switcher {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .switcher-input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .switcher-indicator {
+            position: relative;
+            width: 60px;
+            height: 28px;
+            background: #ccc;
+            border-radius: 28px;
+            display: inline-block;
+            margin-right: 15px;
+            transition: background 0.4s ease;
+        }
+        .switcher-indicator::before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            left: 3px;
+            top: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: transform 0.4s ease;
+        }
+        .switcher-input:checked + .switcher-indicator {
+            background: #28a745;
+        }
+        .switcher-input:checked + .switcher-indicator::before {
+            transform: translateX(32px);
+        }
+        .switcher-label {
+            color: #555;
+            font-size: 14px;
+        }
+        .btn-facebook {
+            background: #3B5998;
+        }
+        .btn-facebook:hover {
+            background: #2d4373;
+            transform: translateY(-3px);
+        }
+        .btn-instagram {
+            background: #E1306C;
+        }
+        .btn-instagram:hover {
+            background: #c13584;
+            transform: translateY(-3px);
+        }
+        hr {
+            border-color: rgba(40, 167, 69, 0.2);
+            margin: 20px 0;
+        }
+        .footer-buttons {
+            position: sticky;
+            bottom: 0;
+            text-align: right;
+            padding: 20px;
+            background: #fff;
+            border-top: 1px solid rgba(40, 167, 69, 0.2);
+            z-index: 10;
+        }
+        .modal-content {
+            border-radius: 15px;
+            border: 2px solid #28a745;
+        }
+        .modal-header {
+            background: #28a745;
+            color: #fff;
+            border-bottom: none;
+        }
+        .modal-title {
+            font-weight: 600;
+        }
+        .modal-body {
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+        }
+        .modal-footer {
+            border-top: none;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="full-page-container">
+        <h4>Site Settings</h4>
+        <div class="card">
+            <div class="row no-gutters row-bordered row-border-light">
+                <div class="col-md-3 pt-0">
+                    <div class="list-group list-group-flush account-settings-links">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">General</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Security</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Site Info</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-social-links">Social Links</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-connections">Integrations</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-notifications">Notifications</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="account-general">
+                            <div class="card-body media align-items-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt class="d-block">
+                                <div class="media-body ml-4">
+                                    <label class="btn btn-outline-primary">
+                                        Upload Site Logo
+                                        <input type="file" class="account-settings-fileinput">
+                                    </label>  
+                                    <button type="button" class="btn btn-default">Reset</button>
+                                    <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                                </div>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label class="form-label">Site Name</label>
+                                    <input type="text" class="form-control mb-1" value="FreshMart">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Tagline</label>
+                                    <input type="text" class="form-control" value="Your Fresh Grocery Hub">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Support Email</label>
+                                    <input type="text" class="form-control mb-1" value="support@freshmart.com">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Currency</label>
+                                    <select class="form-control">
+                                        <option>INR (₹)</option>
+                                        <option>USD ($)</option>
+                                        <option>EUR (€)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-change-password">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label">Current Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">New Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Repeat New Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-info">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label">Site Description</label>
+                                    <textarea class="form-control" rows="5">FreshMart - Your one-stop shop for fresh groceries delivered to your door.</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Launch Date</label>
+                                    <input type="date" class="form-control" value="2025-03-18">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Country</label>
+                                    <select class="form-control">
+                                        <option>India</option>
+                                        <option>USA</option>
+                                        <option>UK</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body pb-2">
+                                <h6 class="mb-4">Contact Info</h6>
+                                <div class="form-group">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" class="form-control" value="+91 123-456-7890">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Website URL</label>
+                                    <input type="text" class="form-control" value="www.freshmart.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-social-links">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label">Twitter</label>
+                                    <input type="text" class="form-control" value="https://twitter.com/freshmart">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Facebook</label>
+                                    <input type="text" class="form-control" value="https://www.facebook.com/freshmart">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Instagram</label>
+                                    <input type="text" class="form-control" value="https://www.instagram.com/freshmart">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-connections">
+                            <div class="card-body">
+                                <button type="button" class="btn btn-facebook">Connect to <strong>Facebook</strong></button>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body">
+                                <button type="button" class="btn btn-instagram">Connect to <strong>Instagram</strong></button>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-notifications">
+                            <div class="card-body pb-2">
+                                <h6 class="mb-4">Site Alerts</h6>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input type="checkbox" class="switcher-input" checked>
+                                        <span class="switcher-indicator"></span>
+                                        <span class="switcher-label">Notify on new orders</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input type="checkbox" class="switcher-input">
+                                        <span class="switcher-indicator"></span>
+                                        <span class="switcher-label">Notify on stock updates</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body pb-2">
+                                <h6 class="mb-4">User Notifications</h6>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input type="checkbox" class="switcher-input" checked>
+                                        <span class="switcher-indicator"></span>
+                                        <span class="switcher-label">Send order confirmations</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input type="checkbox" class="switcher-input">
+                                        <span class="switcher-indicator"></span>
+                                        <span class="switcher-label">Send weekly promotions</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-buttons">
+                <button type="button" class="btn btn-primary" id="saveChangesBtn">Save Changes</button>  
+                <button type="button" class="btn btn-default" id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Modal for Save Confirmation -->
+    <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="saveModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="saveModalLabel">Success</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Settings have been saved successfully!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+ Kin</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Save Changes Button Functionality
+        document.getElementById('saveChangesBtn').addEventListener('click', function() {
+            setTimeout(() => {
+                $('#saveModal').modal('show'); // Show save confirmation modal
+            }, 500); // Simulate saving delay
+        });
+
+        // Cancel Button Functionality (Go Back)
+        document.getElementById('cancelBtn').addEventListener('click', function() {
+            window.history.back(); // Navigate to previous page
+        });
+
+        // Optional: Detect "Cancel" typing anywhere on the page
+        document.addEventListener('keydown', function(event) {
+            let typedText = (event.key === 'Enter') ? '' : (window.typedText || '') + event.key;
+            window.typedText = typedText;
+
+            if (typedText.toLowerCase() === 'cancel') {
+                window.history.back(); // Navigate back if "cancel" is typed
+                window.typedText = ''; // Reset typed text
+            } else if (typedText.length > 6) {
+                window.typedText = ''; // Reset if too long
+            }
+        });
+    </script>
+</body>
+</html>

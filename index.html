@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+   
+    * {
+box-sizing: border-box;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <div class="logo">GROCO</div>
+
+  <div class="main-container">
+    <!-- From Uiverse.io by Admin12121 -->
+    <div class="menu">
+      <a href="#" class="link">
+        <span class="link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="currentColor" viewBox="0 0 256 256">
+            <rect width="256" height="256" fill="none"></rect>
+            <path d="M213.3815,109.61945,133.376,36.88436a8,8,0,0,0-10.76339.00036l-79.9945,72.73477A8,8,0,0,0,40,115.53855V208a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V115.53887A8,8,0,0,0,213.3815,109.61945Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+          </svg>
+        </span>
+        <span class="link-title">Home</span>
+      </a>
+      <a href="product.html" class="link">
+        <span class="link-icon">
+          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 114.58"><title>product</title><path d="M118.13,9.54a3.25,3.25,0,0,1,2.2.41,3.28,3.28,0,0,1,2,3l.57,78.83a3.29,3.29,0,0,1-1.59,3L89.12,113.93a3.29,3.29,0,0,1-2,.65,3.07,3.07,0,0,1-.53,0L3.11,105.25A3.28,3.28,0,0,1,0,102V21.78H0A3.28,3.28,0,0,1,2,18.7L43.89.27h0A3.19,3.19,0,0,1,45.63,0l72.5,9.51Zm-37.26,1.7-24.67,14,30.38,3.88,22.5-14.18-28.21-3.7Zm-29,20L50.75,64.62,38.23,56.09,25.72,63.17l2.53-34.91L6.55,25.49V99.05l77.33,8.6V35.36l-32-4.09Zm-19.7-9.09L56.12,8,45.7,6.62,15.24,20l16.95,2.17ZM90.44,34.41v71.12l25.9-15.44-.52-71.68-25.38,16Z"/></svg>
+        </span>
+        <span class="link-title">Products</span>
+      </a>
+      <a href="support.html" class="link">
+        <span class="link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="currentColor" viewBox="0 0 256 256">
+            <rect width="256" height="256" fill="none"></rect>
+            <path d="M45.42853,176.99811A95.95978,95.95978,0,1,1,79.00228,210.5717l.00023-.001L45.84594,220.044a8,8,0,0,1-9.89-9.89l9.47331-33.15657Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+            <line x1="96" y1="112" x2="160" y2="112" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+            <line x1="96" y1="144" x2="160" y2="144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+          </svg>
+        </span>
+        <span class="link-title">Chat</span>
+      </a>
+      <div class="search-container">
+        <a href="#" class="link search-icon">
+            <span class="link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
+                    <path d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z"></path>
+                </svg>
+            </span>
+            <span class="link-title">Search</span>
+        </a>
+    
+        <!-- Search Box -->
+        <input type="text" class="search-box" placeholder="Search...">
+    </div>
+      
+    </div>
+    
+
+   
+  
+    <!-- From Uiverse.io by gagan-gv -->
+    <button class="btn" id="menu-btn">
+      <span class="icon">
+        <svg viewBox="0 0 175 80" width="40" height="40">
+          <rect width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+          <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+          <rect y="60" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+        </svg>
+      </span>
+      <span class="text"></span>
+    </button>
+
+    <!-- Right Side Menu -->
+    <div class="side-menu" id="side-menu">
+      <ul>
+        <li><a href="profile.html">User Profile</a></li>
+        <li><a href="settings.html">Settings</a></li>
+        <li><a href="#" onclick="scrollToBottom()">Find Us</a></li>
+        <li><a href="login-trigger" class="login-trigger">login</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="#" onclick="showLogoutPopup()">Logout</a></li>
+      </ul>
+    </div>
+
+
+</div>
+
+    <div class="profile">
+      <div class="image">
+        <img src="image/ben10-1.jpg" alt="Profile Picture">
+      </div>
+      <div class="card-info">
+        <span>BEN</span>
+        <p>Support Specialist</p>
+      </div>
+      <a class="button" href="profile.html">Edit</a>
+    </div>
+
+    <!-- From Uiverse.io by Julian956 -->
+    <a href="cart.html">
+      <button class="btn1-cart">
+        <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38" xmlns="http://www.w3.org/2000/svg">
+          <title>icon-cart</title>
+          <path transform="translate(-3.62 -0.85)" d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0"></path>
+        </svg>
+        <span class="quantity"></span>
+      </button>
+    </a>
+
+    <!-- From Uiverse.io by vinodjangid07 -->
+    <div class="loadersss">
+      <div class="truckWrapper">
+        <div class="truckBody">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 198 93" class="trucksvg">
+            <path stroke-width="3" stroke="#282828" fill="#F83D3D" d="M135 22.5H177.264C178.295 22.5 179.22 23.133 179.594 24.0939L192.33 56.8443C192.442 57.1332 192.5 57.4404 192.5 57.7504V89C192.5 90.3807 191.381 91.5 190 91.5H135C133.619 91.5 132.5 90.3807 132.5 89V25C132.5 23.6193 133.619 22.5 135 22.5Z"></path>
+            <path stroke-width="3" stroke="#282828" fill="#7D7C7C" d="M146 33.5H181.741C182.779 33.5 183.709 34.1415 184.078 35.112L190.538 52.112C191.16 53.748 189.951 55.5 188.201 55.5H146C144.619 55.5 143.5 54.3807 143.5 53V36C143.5 34.6193 144.619 33.5 146 33.5Z"></path>
+            <path stroke-width="2" stroke="#282828" fill="#282828" d="M150 65C150 65.39 149.763 65.8656 149.127 66.2893C148.499 66.7083 147.573 67 146.5 67C145.427 67 144.501 66.7083 143.873 66.2893C143.237 65.8656 143 65.39 143 65C143 64.61 143.237 64.1344 143.873 63.7107C144.501 63.2917 145.427 63 146.5 63C147.573 63 148.499 63.2917 149.127 63.7107C149.763 64.1344 150 64.61 150 65Z"></path>
+            <rect stroke-width="2" stroke="#282828" fill="#FFFCAB" rx="1" height="7" width="5" y="63" x="187"></rect>
+            <rect stroke-width="2" stroke="#282828" fill="#282828" rx="1" height="11" width="4" y="81" x="193"></rect>
+            <rect stroke-width="3" stroke="#282828" fill="#DFDFDF" rx="2.5" height="90" width="121" y="1.5" x="6.5"></rect>
+            <rect stroke-width="2" stroke="#282828" fill="#DFDFDF" rx="2" height="4" width="6" y="84" x="1"></rect>
+          </svg>
+        </div>
+        <div class="truckTires">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30" class="tiresvg">
+            <circle stroke-width="3" stroke="#282828" fill="#282828" r="13.5" cy="15" cx="15"></circle>
+            <circle fill="#DFDFDF" r="7" cy="15" cx="15"></circle>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30" class="tiresvg">
+            <circle stroke-width="3" stroke="#282828" fill="#282828" r="13.5" cy="15" cx="15"></circle>
+            <circle fill="#DFDFDF" r="7" cy="15" cx="15"></circle>
+          </svg>
+        </div>
+        <div class="road"></div>
+        <svg xml:space="preserve" viewBox="0 0 453.459 453.459" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Capa_1" version="1.1" fill="#000000" class="lampPost">
+          <path d="M252.882,0c-37.781,0-68.686,29.953-70.245,67.358h-6.917v8.954c-26.109,2.163-45.463,10.011-45.463,19.366h9.993c-1.65,5.146-2.507,10.54-2.507,16.017c0,28.956,23.558,52.514,52.514,52.514c28.956,0,52.514-23.558,52.514-52.514c0-5.478-0.856-10.872-2.506-16.017h9.992c0-9.354-19.352-17.204-45.463-19.366v-8.954h-6.149C200.189,38.779,223.924,16,252.882,16c29.952,0,54.32,24.368,54.32,54.32c0,28.774-11.078,37.009-25.105,47.437c-17.444,12.968-37.216,27.667-37.216,78.884v113.914h-0.797c-5.068,0-9.174,4.108-9.174,9.177c0,2.844,1.293,5.383,3.321,7.066c-3.432,27.933-26.851,95.744-8.226,115.459v11.202h45.75v-11.202c18.625-19.715-4.794-87.527-8.227-115.459c2.029-1.683,3.322-4.223,3.322-7.066c0-5.068-4.107-9.177-9.176-9.177h-0.795V196.641c0-43.174,14.942-54.283,30.762-66.043c14.793-10.997,31.559-23.461,31.559-60.277C323.202,31.545,291.656,0,252.882,0zM232.77,111.694c0,23.442-19.071,42.514-42.514,42.514c-23.442,0-42.514-19.072-42.514-42.514c0-5.531,1.078-10.957,3.141-16.017h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div>
+
+    <!-- Trigger Button from Uiverse.io by asgardOP -->
+    <div id="msg-trigger-btn" class="msg-loader">
+      <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          height="24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          class="w-6 h-6 text-gray-800 dark:text-white"
+      >
+          <path
+              d="M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.292-.538 1.292H5.538C5 18 5 17.301 5 16.708c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365ZM8.733 18c.094.852.306 1.54.944 2.112a3.48 3.48 0 0 0 4.646 0c.638-.572 1.236-1.26 1.33-2.112h-6.92Z"
+              stroke-width="2"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              stroke="currentColor"
+          ></path>
+      </svg>
+      <div class="msg-point"></div>
+    </div>
+    
+    <!-- Container for Message Buttons -->
+
+    <div id="msg-container" class="msg-hidden">
+      <button id="msg-btn-1" class="msg-button">
+          <div class="msg-avatar-content">
+              <div class="msg-status"></div>
+              <div class="msg-avatar">
+                <div class="msg-user-img" id="userIcon"></div>
+
+              </div>
+          </div>
+          <div class="msg-notice">
+              <div class="msg-username">GREAT...</div>
+              <div class="msg-label">ELON<span class="msg-number">3</span></div>
+              <div class="msg-user-id">@elonmusk</div>
+          </div>
+      </button>
+    
+      <button id="msg-btn-2" class="msg-button">
+          <div class="msg-avatar-content">
+              <div class="msg-status"></div>
+              <div class="msg-avatar">
+               
+
+              </div>
+          </div>
+          <div class="msg-notice">
+              <div class="msg-username">HAHHAAAH</div>
+              <div class="msg-label">MODI<span class="msg-number">3</span></div>
+              <div class="msg-user-id">@jessisanders</div>
+          </div>
+      </button>
+    
+      <button id="msg-btn-3" class="msg-button">
+          <div class="msg-avatar-content">
+              <div class="msg-status"></div>
+              <div class="msg-avatar">
+               
+              </div>
+          </div>
+          <div class="msg-notice">
+              <div class="msg-username">HHEHHE</div>
+              <div class="msg-label">NITISH<span class="msg-number">3</span></div>
+              <div class="msg-user-id">@nitishkapoor</div>
+          </div>
+      </button>
+    
+      <button id="msg-btn-4" class="msg-button">
+          <div class="msg-avatar-content">
+              <div class="msg-status"></div>
+              <div class="msg-avatar">
+                
+
+              </div>
+          </div>
+          <div class="msg-notice">
+              <div class="msg-username">HII</div>
+              <div class="msg-label">ANJLI<span class="msg-number">3</span></div>
+              <div class="msg-user-id">@anjlithakur</div>
+          </div>
+      </button>
+    
+      <button id="msg-btn-5" class="msg-button">
+          <div class="msg-avatar-content">
+              <div class="msg-status"></div>
+              <div class="msg-avatar">
+              
+
+              </div>
+          </div>
+          <div class="msg-notice">
+              <div class="msg-username">HELLO !!!</div>
+              <div class="msg-label">DHRUV<span class="msg-number">3</span></div>
+              <div class="msg-user-id">@dhruvsharma</div>
+          </div>
+        
+
+
+  </header>
+
+<div>
+
+<!-- Blur overlay -->
+<div class="blur-overlay"></div>
+
+<!-- Login Popup -->
+<div class="login-popup" id="loginPopup">
+    <div class="login-title">Sign In</div>
+    <form action="" class="login-form">
+        <input required="" class="login-input" type="email" name="email" id="loginEmail" placeholder="E-mail">
+        <input required="" class="login-input" type="password" name="password" id="loginPassword" placeholder="Password">
+        <span class="pwd-reset"><a href="#">Forgot Password?</a></span>
+        <input class="submit-btn" type="submit" value="Sign In">
+    </form>
+    <div class="social-login">
+        <span class="social-title">Or Sign in with</span>
+        <div class="social-btns">
+            <button class="social-login-btn google">
+                <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 488 512">
+                    <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
+                </svg>
+            </button>
+            <button class="social-login-btn apple">
+                <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path>
+                </svg>
+            </button>
+            <button class="social-login-btn twitter">
+                <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                    <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <span class="terms"><a href="#">Learn user licence agreement</a></span>
+</div>
+
+<div>
+
+ <!-- Moving Text Section -->
+ <div class="marquee-container">
+  <div class="marquee">
+    <span class="marquee-item">🎉 Special Offer: Buy 2 Get 1 Free on Fresh Vegetables! 🎉</span>
+    <span class="marquee-item">🥑 New Arrival: Organic Avocados - Stock Up Now! 🥑</span>
+    <span class="marquee-item">🍎 20% Off on Apples This Week Only! 🍎</span>
+    <span class="marquee-item">🥦 Free Delivery on Orders Over $50! 🥦</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="marquee-item">🎉 Special Offer: Buy 2 Get 1 Free on Fresh Vegetables! 🎉</span>
+    <span class="marquee-item">🥑 New Arrival: Organic Avocados - Stock Up Now! 🥑</span>
+    <span class="marquee-item">🍎 20% Off on Apples This Week Only! 🍎</span>
+    <span class="marquee-item">🥦 Free Delivery on Orders Over $50! 🥦</span>
+    <span class="marquee-item">🎉 Special Offer: Buy 2 Get 1 Free on Fresh Vegetables! 🎉</span>
+    <span class="marquee-item">🥑 New Arrival: Organic Avocados - Stock Up Now! 🥑</span>
+    <span class="marquee-item">🍎 20% Off on Apples This Week Only! 🍎</span>
+    <span class="marquee-item">🥦 Free Delivery on Orders Over $50! 🥦</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="marquee-item">🎉 Special Offer: Buy 2 Get 1 Free on Fresh Vegetables! 🎉</span>
+    <span class="marquee-item">🥑 New Arrival: Organic Avocados - Stock Up Now! 🥑</span>
+    <span class="marquee-item">🍎 20% Off on Apples This Week Only! 🍎</span>
+    <span class="marquee-item">🥦 Free Delivery on Orders Over $50! 🥦</span>
+    <span class="marquee-item">🎉 Special Offer: Buy 2 Get 1 Free on Fresh Vegetables! 🎉</span>
+    <span class="marquee-item">🥑 New Arrival: Organic Avocados - Stock Up Now! 🥑</span>
+    <span class="marquee-item">🍎 20% Off on Apples This Week Only! 🍎</span>
+    <span class="marquee-item">🥦 Free Delivery on Orders Over $50! 🥦</span><span class="marquee-item">🎉 Special Offer: Buy 2 Get 1 Free on Fresh Vegetables! 🎉</span>
+    <span class="marquee-item">🥑 New Arrival: Organic Avocados - Stock Up Now! 🥑</span>
+    <span class="marquee-item">🍎 20% Off on Apples This Week Only! 🍎</span>
+    <span class="marquee-item">🥦 Free Delivery on Orders Over $50! 🥦</span>
+  </div>
+</div>
+<!-- Moving Cards -->
+<div class="movingcards">
+  <div class="inners" style="--quantity: 10;">
+    <div class="cards" style="--index: 0; --r: 142; --g: 249; --b: 252;">
+      <div class="imgs">
+        <img src="image/Almond-Milk-Transparent-PNG.png" alt="Image Description" />
+      </div>
+    </div>
+    <div class="cards" style="--index: 1; --r: 142; --g: 252; --b: 204;">
+      <div class="imgs">
+        <img src="image/cat-1.png" alt="Image Description" />
+      </div>
+    </div>
+    <div class="cards" style="--index: 2; --r: 142; --g: 252; --b: 157;">
+      <div class="imgs">
+        <img src="image/cat-2.png" alt="Image Description" />
+      </div>
+    </div>
+    <div class="cards" style="--index: 3; --r: 215; --g: 252; --b: 142;">
+      <div class="imgs">
+        <img src="image/Strawberries.png" alt="Image Description" />
+      </div>
+    </div>
+    <div class="cards" style="--index: 4; --r: 252; --g: 252; --b: 142;">
+      <div class="imgs">
+        <img src="image/vecteezy_ai-generated-glass-of-cola-with-ice-isolated-on-transparent_41732526.png" alt="Image Description" />
+      </div>
+    </div>
+    <div class="cards" style="--index: 5; --r: 252; --g: 208; --b: 142;">
+      <div class="imgs">
+        <img src="image/vecteezy_apple-with_24865855.png" alt="Image Description" />
+      </div>
+    </div>
+    <div class="cards" style="--index: 6; --r: 252; --g: 142; --b: 142;">
+      <div class="imgs">
+        <img src="image/vecteezy_burger-png-transparent_22911697.png" alt="Image Description" />
+      </div>
+    </div>
+    <div class="cards" style="--index: 7; --r: 252; --g: 142; --b: 239;">
+      <div class="imgs">
+        <img src="image/vecteezy_hot-and-crispy-fried-chicken-isolated-on-transparent_24724514.png" alt="Image Description" />
+      </div>
+    </div>
+    <div class="cards" style="--index: 8; --r: 204; --g: 142; --b: 252;">
+      <div class="imgs">
+        <img src="image/vecteezy_ice-cream-sundae-with_25063627.png" alt="Image Description" />
+      </div>
+    </div>
+    <div class="cards" style="--index: 9; --r: 142; --g: 202; --b: 252;">
+      <div class="imgs">
+        <img src="image/vecteezy_fresh-corn-on-the-cob-with-vibrant-yellow-kernels-and-leafy_55237237.png" alt="Image Description" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+
+<!--logout-->
+<!-- Logout Popup (Initially Hidden) -->
+<div class="logout-popup" id="logoutPopup">
+  <div class="popup-content">
+      <h2>Goodbye!</h2>
+      <p>You have been logged out successfully. Come back soon!</p>
+      <div class="popup-buttons">
+          <button class="close-btn" onclick="closeLogoutPopup()">Close</button>
+          <button class="redirect-btn" onclick="redirectToHome()">Back to Home</button>
+      </div>
+  </div>
+  
+</div>
+
+<!-- Card 1 -->
+<section class="change">
+  <div class="drink-card-1">
+    <div class="drink-svg-container-1">
+       
+        
+    </div>
+    <div class="drink-card-info-1">
+        <p>DRINKS</p>
+        <a href="product.html" class="drink-challenge-button-1">More</a>
+    </div>
+</div>
+
+<!-- Card 2 -->
+<div class="drink-card-2">
+    <div class="drink-svg-container-2">
+       
+
+    </div>
+    <div class="drink-card-info-2">
+        <p>SNACKS</p>
+        <a href="product.html" class="drink-challenge-button-2">More</a>
+    </div>
+</div>
+
+<!-- Card 3 -->
+<div class="drink-card-3">
+    <div class="drink-svg-container-3">
+        
+        
+    </div>
+    <div class="drink-card-info-3">
+  
+        <p>FRUITS & VEGETABLES</p>
+        <a href="product.html" class="drink-challenge-button-3">More</a>
+    </div>
+</div>
+
+ </section>
+<!-- Main container for the loading card -->
+<div id="loadingCardWrapper">
+  <!-- Container for the loading text and animated words -->
+  <div class="loadingContainer">
+      <p>FRESH</p>
+      <!-- Container for the animated words -->
+      <div class="animatedTextBox">
+          <span class="textItem">Vegetables</span>
+          <span class="textItem">Fruits</span>
+          <span class="textItem">Drinks</span>
+          <span class="textItem">Dairy Products</span>
+          <span class="textItem">Sea food</span>
+      </div>
+  </div>
+</div>
+
+ <!-- blog heading-->
+ <div class="item-wrapper" id="itemWrapper">
+  <!-- Categories will be added here -->
+</div>
+
+
+<!-- Wrapper to keep the background fixed -->
+<div class="blogs-heading-wrapper">
+  <!-- Full width background -->
+  <div class="blogs-heading-bg"></div>
+  
+  <!-- Animated heading text -->
+  <div class="blogs-heading">
+    <span>&lt;</span>
+    <span> SITE BLOGS </span>
+    <span>&gt;</span>
+  </div>
+</div>
+
+
+
+
+<!--bloges-->
+<div class="page-container">
+  <div class="blog-section">
+      <div class="blog-text-content">
+          <p class="blog-title">* Fresh Vegetables for a Healthy Life</p>
+          <p class="blog-description">Eating fresh vegetables daily can boost immunity and overall well-being. Explore the best organic veggies available in our store.</p>
+      </div>
+      <img src="image/front-view-fresh-ripe-vegetables-composition-dark-table-ripe-fresh-color.jpg" alt="Fresh Vegetables" class="blog-image">
+  </div>
+
+  <div class="blog-section">
+      <div class="blog-text-content">
+          <p class="blog-title">* Why Organic Fruits Are a Better Choice</p>
+          <p class="blog-description">Organic fruits are free from harmful chemicals and pesticides, ensuring better taste and nutrition for you and your family.</p>
+      </div>
+      <img src="image/mixed-fruits-7772552.jpg" alt="Organic Fruits" class="blog-image">
+  </div>
+
+  <div class="blog-section">
+      <div class="blog-text-content">
+          <p class="blog-title">* Healthy Grains for a Balanced Diet</p>
+          <p class="blog-description">Whole grains provide essential nutrients and fiber that help in digestion and energy levels. Check out our range of high-quality grains.</p>
+      </div>
+      <img src="image/ai-generated-9096288.jpg" alt="Healthy Grains" class="blog-image">
+  </div>
+
+  <div class="blog-section">
+      <div class="blog-text-content">
+          <p class="blog-title">* Dairy Products: Fresh and Nutritious</p>
+          <p class="blog-description">Get the freshest dairy products including milk, cheese, and yogurt, sourced from trusted farms to ensure the highest quality.</p>
+      </div>
+      <img src="image/milk-5228133.jpg" alt="Dairy Products" class="blog-image">
+  </div>
+</div>
+<footer>
+  <div class="footer-container">
+      <div class="footer-section">
+          <h4>Useful Links</h4>
+          <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Lead</a></li>
+              <li><a href="#">Value</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-section">
+          <h4>Categories</h4>
+          <ul>
+              <li><a href="#">Vegetables & Fruits</a></li>
+              <li><a href="#">Bakery & Biscuits</a></li>
+              <li><a href="#">Dairy & Breakfast</a></li>
+              <li><a href="#">Cleaning Essentials</a></li>
+              <li><a href="#">Personal Care</a></li>
+              <li><a href="#">Pet Care</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-section">
+          <h4>Download App</h4>
+          <div class="app-buttons">
+              <img src="image/App-Store-Logo-PNG-Images.png" alt="App Store">
+              </div>
+              <div class="playss">
+              
+              <img src="image/[CITYPNG.COM]FREE Google Play PlayStore Logo PNG - 2000x2000.png" alt="Google Play">
+          </div>
+        </div>
+    
+
+      <div class="footer-section">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+              
+            <!-- From Uiverse.io by AngelSg444734 --> 
+<div class="main_container">
+  <div class="main">
+    <div class="up">
+      <button class="card1">
+        <svg
+          height="50"
+          width="50"
+          viewBox="0 0 100 90"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m120 60c0 33.1371-26.8629 60-60 60s-60-26.8629-60-60 26.8629-60 60-60 60 26.8629 60 60z"
+            fill="#ffffff00"
+          ></path>
+          <path
+            class="youtube"
+            d="m25 49c0-7.732 6.268-14 14-14h42c7.732 0 14 6.268 14 14v22c0 7.732-6.268 14-14 14h-42c-7.732 0-14-6.268-14-14z"
+            fill="#fff"
+          ></path>
+          <path
+            class="youtube_center_Icon"
+            d="m74 59.5-21 10.8253v-21.6506z"
+            fill="black"
+          ></path>
+        </svg>
+      </button>
+      <button class="card2">
+        <svg
+          height="50"
+          width="50"
+          viewBox="0 0 60 32"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="discord"
+            d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z"
+            fill="azure"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div class="down">
+      <button class="card3">
+        <svg
+          width="50"
+          height="50"
+          viewBox="0 0 34 50"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="twitter"
+            d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"
+            fill="azure"
+          ></path>
+        </svg>
+      </button>
+      <button class="card4">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 612 530"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="twitch"
+            d="M391.17,103.47H352.54v109.7h38.63ZM285,103H246.37V212.75H285ZM120.83,0,24.31,91.42V420.58H140.14V512l96.53-91.42h77.25L487.69,256V0ZM449.07,237.75l-77.22,73.12H294.61l-67.6,64v-64H140.14V36.58H449.07Z"
+            fill="azure"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+
+  <div class="footer-bottom">
+      <p>© 2025 Your Company. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+ <!-- Product Category Container -->
+ <div class="item-wrapper" id="itemWrapper">
+  <!-- Categories will be added here -->
+</div>
+  <script>
+    
+
+//   NOTIFICATION 
+
+const triggerBtn = document.getElementById('msg-trigger-btn');
+        const container = document.getElementById('msg-container');
+        const buttons = document.querySelectorAll('.msg-button');
+
+        // Trigger button pe click se toggle
+        triggerBtn.addEventListener('click', function(event) {
+            event.stopPropagation(); // Trigger button ke click ko document tak na jane do
+            if (container.classList.contains('msg-hidden')) {
+                // Show karo
+                container.classList.remove('msg-hidden');
+                buttons.forEach((btn) => {
+                    btn.classList.remove('msg-hiding'); // Hide animation hatao
+                    btn.classList.add('msg-visible');   // Show animation chalao
+                });
+            } else {
+                // Hide karo with animation
+                buttons.forEach((btn, index) => {
+                    btn.classList.add('msg-hiding');    // Hide animation chalao
+                    btn.classList.remove('msg-visible'); // Show animation hatao
+                    setTimeout(() => {
+                        if (!container.classList.contains('msg-hidden')) {
+                            container.classList.add('msg-hidden');
+                        }
+                    }, 400 + index * 100); // Animation duration + staggered delay
+                });
+            }
+        });
+
+        // Document pe kahin bhi click se hide
+        document.addEventListener('click', function(event) {
+            if (!container.classList.contains('msg-hidden') && !triggerBtn.contains(event.target)) {
+                buttons.forEach((btn, index) => {
+                    btn.classList.add('msg-hiding');    // Hide animation chalao
+                    btn.classList.remove('msg-visible'); // Show animation hatao
+                    setTimeout(() => {
+                        if (!container.classList.contains('msg-hidden')) {
+                            container.classList.add('msg-hidden');
+                        }
+                    }, 400 + index * 100); // Animation duration + staggered delay
+                });
+            }
+        });
+
+
+    //scroll to top 
+
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".link").addEventListener("click", function (event) {
+      event.preventDefault(); // Anchor tag ka default behavior rokta hai
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  });
+  
+//SEARCH HOVER BUTTON
+
+document.addEventListener("DOMContentLoaded", function () {
+    const searchIcon = document.querySelector(".search-icon");
+    const searchBox = document.querySelector(".search-box");
+    const searchContainer = document.querySelector(".search-container");
+
+    // सर्च आइकन पर क्लिक करने से बॉक्स खुलेगा
+    searchIcon.addEventListener("click", function (event) {
+        event.preventDefault();
+        searchContainer.classList.toggle("active");
+        searchBox.focus();
+    });
+
+    // एंटर प्रेस करने पर सर्च बॉक्स छिप जाएगा
+    searchBox.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            searchContainer.classList.remove("active");
+            searchBox.value = "";
+        }
+    });
+
+    // जब बॉक्स से बाहर क्लिक करें तो भी hide हो जाए
+    document.addEventListener("click", function (event) {
+        if (!searchBox.contains(event.target) && !searchIcon.contains(event.target)) {
+            searchContainer.classList.remove("active");
+        }
+    });
+});
+
+
+
+
+//login popup
+
+document.addEventListener('DOMContentLoaded', () => {
+        const loginTrigger = document.querySelector('.login-trigger');
+        const loginPopup = document.querySelector('.login-popup');
+        const blurOverlay = document.querySelector('.blur-overlay');
+
+        // Safety check for elements
+        if (!loginTrigger || !loginPopup || !blurOverlay) {
+            console.warn('One or more elements not found:', {
+                loginTrigger,
+                loginPopup,
+                blurOverlay
+            });
+            return;
+        }
+
+        // Show popup on login button click
+        loginTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation(); // Prevent any parent menu click handlers
+
+            // Close any open menu (assuming class 'menu-card' or adjust as needed)
+            const menuCard = document.querySelector('.menu-card');
+            if (menuCard) {
+                menuCard.style.display = 'none';
+            }
+
+            loginPopup.classList.add('show');
+            blurOverlay.classList.add('show');
+        });
+
+        // Close popup when clicking outside
+        blurOverlay.addEventListener('click', (e) => {
+            if (e.target === blurOverlay) { // Only close if clicking the overlay itself
+                loginPopup.classList.remove('show');
+                blurOverlay.classList.remove('show');
+            }
+        });
+
+        // Prevent clicks inside popup from closing it
+        loginPopup.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Optional: Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && loginPopup.classList.contains('show')) {
+                loginPopup.classList.remove('show');
+                blurOverlay.classList.remove('show');
+            }
+        });
+    });
+
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuBtn = document.getElementById("menu-btn");
+      const sideMenu = document.getElementById("side-menu");
+
+      // Toggle Menu
+      menuBtn.addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevents triggering document click event
+        sideMenu.classList.toggle("open");
+      });
+
+      // Click Outside to Close
+      document.addEventListener("click", function (event) {
+        if (!sideMenu.contains(event.target) && !menuBtn.contains(event.target)) {
+          sideMenu.classList.remove("open");
+        }
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      let profileBtn = document.querySelector(".side-menu ul li:first-child a"); // User Profile Button
+      let profileCard = document.querySelector(".profile"); // Profile Card
+      let overlay = document.createElement("div"); // Overlay Create किया
+      overlay.classList.add("overlay");
+      document.body.appendChild(overlay);
+
+      // User Profile पर Click करने से Profile Show होगा
+      profileBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        profileCard.classList.add("active");
+        overlay.classList.add("active");
+      });
+
+      // Overlay पर Click करने से Profile Hide होगा
+      overlay.addEventListener("click", function () {
+        profileCard.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+    });
+
+//logout//
+  // Show the logout popup and blur the background
+  function showLogoutPopup() {
+    const popup = document.getElementById('logoutPopup');
+    popup.style.display = 'flex';
+    document.body.classList.add('logout-popup-active'); // Updated class name
+}
+
+// Close the logout popup and remove blur
+function closeLogoutPopup() {
+    const popup = document.getElementById('logoutPopup');
+    popup.style.display = 'none';
+    document.body.classList.remove('logout-popup-active'); // Updated class name
+}
+
+// Redirect to the homepage and remove blur
+function redirectToHome() {
+    document.body.classList.remove('logout-popup-active'); // Updated class name
+    window.location.href = '/'; // Replace with your homepage URL
+}
+
+
+
+
+const itemWrapper = document.getElementById("itemWrapper");
+
+        // Array of categories with customizable names and image URLs
+        // Change the 'name' to your desired category text
+        // Replace 'imageSrc' with the path to your custom image (e.g., "images/your-image.jpg")
+        const categories = [
+            { name: "Fresh Paan", imageSrc: "image/vecteezy_apple-with_24865855.png" },
+            { name: "Milk & Bread", imageSrc: "image/Almond-Milk-Transparent-PNG.png" },
+            { name: "Fresh Produce", imageSrc: "image/Blueberries-PNG-Photos.png" },
+            { name: "Beverages", imageSrc: "image/cat-1.png" },
+            { name: "Snack Time", imageSrc: "image/cat-4.png" },
+            { name: "Quick Meals", imageSrc: "image/Eggs-PNG-Clipart.png" },
+            { name: "Desserts", imageSrc: "image/oil.jpeg" },
+            { name: "Baked Goods", imageSrc: "image/Strawberries.png" },
+            { name: "Hot Drinks", imageSrc: "image/vecteezy_ai-generated-glass-of-cola-with-ice-isolated-on-transparent_41732526.png" },
+            { name: "Grains & Pulses", imageSrc: "image/vecteezy_fresh-corn-on-the-cob-with-vibrant-yellow-kernels-and-leafy_55237237.png" },
+            { name: "Spices & Oils", imageSrc: "image/vecteezy_hot-and-crispy-fried-chicken-isolated-on-transparent_24724514.png" },
+            { name: "Condiments", imageSrc: "image/vecteezy_ice-cream-sundae-with_25063627.png" },
+            { name: "Meat & Seafood", imageSrc: "image/vecteezy_ai-generated-onion-cut-in-half-png-isolated-on-transparent_38015653.png" },
+            { name: "Healthy Choices", imageSrc: "image/vecteezy_ai-generated-realistic-fresh-orange-slice_41306465.png" },
+            { name: "Baby Products", imageSrc: "image/vecteezy_bunch-of-bananas_12909735.png" },
+            { name: "Health Care", imageSrc: "image/vecteezy_burger-png-transparent_22911697.png" },
+            { name: "Cleaning Supplies", imageSrc: "image/vecteezy_garlic-png-with-ai-generated_33303214.png" },
+            { name: "Office Supplies", imageSrc: "image/vecteezy_potatos-isolated-on-transparent-background_45871586.png" }
+        ];
+
+        // Generate category items
+        categories.forEach((category, index) => {
+            const item = document.createElement("div");
+            item.classList.add("item-box");
+            item.style.setProperty('--index', index);
+            item.innerHTML = `
+                <img src="${category.imageSrc}" alt="${category.name}" class="item-img">
+                <p class="item-caption">${category.name}</p>
+            `;
+            // Add click event to redirect to product.html with category as query parameter
+            item.addEventListener("click", () => {
+                window.location.href = `product.html?category=${encodeURIComponent(category.name)}`;
+            });
+            itemWrapper.appendChild(item);
+        });
+
+        // Add the "View More" button and link it to product.html
+        const viewMoreBtn = document.createElement("button");
+        viewMoreBtn.classList.add("view-more-btn");
+        viewMoreBtn.textContent = "More";
+        viewMoreBtn.addEventListener("click", () => {
+            window.location.href = "product.html?category=all";
+        });
+        itemWrapper.appendChild(viewMoreBtn);
+
+        function scrollToBottom() {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth"
+        });
+    }
+
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

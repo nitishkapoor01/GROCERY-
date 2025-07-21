@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /*loading */
+  /* Loader Fullscreen */
+  /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: rgba(255, 255, 255, 0.8); /* Faded white background */
+    color: #333333;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100vh;
+    position: relative;
+}
+
+/* Loader Wrapper (Full Screen Centered) */
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Loader */
+.loader {
+    width: 80px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Loader Text Animation */
+.loader-text {
+    position: absolute;
+    top: 0;
+    color: #C8B6FF;
+    animation: text_713 1s ease both infinite;
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
+
+/* Loading Bar */
+.load {
+    background-color: #9A79FF;
+    border-radius: 50px;
+    display: block;
+    height: 16px;
+    width: 16px;
+    bottom: 0;
+    position: absolute;
+    transform: translateX(64px);
+    animation: loading_713 1.8s ease both;
+}
+
+/* Inside Bar */
+.load::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #D1C2FF;
+    border-radius: inherit;
+    animation: loading2_713 1.8s ease both;
+}
+
+/* Loader Animations */
+@keyframes text_713 {
+    0% { letter-spacing: 1px; transform: translateX(0px); }
+    50% { letter-spacing: 2px; transform: translateX(26px); }
+    100% { letter-spacing: 1px; transform: translateX(0px); }
+}
+
+@keyframes loading_713 {
+    0% { width: 16px; transform: translateX(0px); }
+    50% { width: 100%; transform: translateX(0px); }
+    100% { width: 16px; transform: translateX(64px); }
+}
+
+@keyframes loading2_713 {
+    0% { transform: translateX(0px); width: 16px; }
+    50% { transform: translateX(0%); width: 80%; }
+    100% { transform: translateX(0px); width: 16px; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .loader {
+        width: 60px;
+        height: 40px;
+    }
+
+    .loader-text {
+        font-size: 0.7rem;
+    }
+}
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: rgba(255, 255, 255, 0.8); /* Faded white background */
+            color: #333333;
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Ball Animation */
+        @keyframes ballMove {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(50px); }
+            100% { transform: translateY(0); }
+        }
+
+        .ball {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            filter: blur(33px);
+            opacity: 0.6;
+            animation: ballMove 3s infinite ease-in-out;
+        }
+
+        /* Ball Color Variation */
+        .ball:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            background-color: #ff7e5f;
+            animation-delay: 0s;
+        }
+
+        .ball:nth-child(2) {
+            top: 30%;
+            left: 20%;
+            background-color: #feb47b;
+            animation-delay: 1s;
+        }
+
+        .ball:nth-child(3) {
+            top: 50%;
+            left: 30%;
+            background-color: #6a11cb;
+            animation-delay: 2s;
+        }
+
+        .ball:nth-child(4) {
+            top: 70%;
+            left: 40%;
+            background-color: #00c6ff;
+            animation-delay: 3s;
+        }
+
+        .ball:nth-child(5) {
+            top: 20%;
+            left: 60%;
+            background-color: #ff66b2;
+            animation-delay: 4s;
+        }
+
+        .ball:nth-child(6) {
+            top: 40%;
+            left: 80%;
+            background-color: #34e89e;
+            animation-delay: 5s;
+        }
+
+        /* Container Styling */
+        .support-container {
+            max-width: 80%;
+            margin: auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2); /* More transparent background */
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            overflow-y: auto;
+            max-height: 90vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Heading */
+        h1, h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #333333;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #ffcc00;
+            border-radius: 10px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .faq:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contact Section */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 15px 0;
+            font-size: 1.2rem;
+            color: #333333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffcc00;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #333333;
+        }
+
+        /* Social Media Links */
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px;
+            background: #ffcc00;
+            color: black;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            transition: 0.4s;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: #ff7e5f;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Form Styling */
+        form {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: black;
+            transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid #ff7e5f;
+            box-shadow: 0 0 10px rgba(255, 126, 95, 0.5);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #999;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #ff7e5f;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.4s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: #feb47b;
+            color: black;
+            transform: translateY(-5px);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: #ff7e5f;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.4s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover {
+            background: #feb47b;
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .support-container {
+                max-width: 90%;
+                padding: 25px;
+            }
+
+            h1, h2 {
+                font-size: 1.8rem;
+            }
+
+            button, .back-button {
+                font-size: 1.1rem;
+            }
+
+            .social-links a {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+      <!-- Loader -->
+      <div class="loader-wrapper">
+        <div class="loader">
+            <span class="loader-text">LOADING...</span>
+            <span class="load"></span>
+        </div>
+    </div>
+  
+    </div>
+    <!-- Add Ball Elements -->
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+
+    <div class="support-container">
+
+        <h1>Customer Support</h1>
+        <p>Welcome to our support page! Here you can find answers to common questions and contact us for further assistance.</p>
+
+        <h2>Frequently Asked Questions (FAQs)</h2>
+        <div class="faq">
+            <h3>1. How do I place an order?</h3>
+            <p>You can browse our menu, select your favorite food items, and proceed to checkout.</p>
+        </div>
+
+        <div class="faq">
+            <h3>2. What payment methods are accepted?</h3>
+            <p>We accept credit/debit cards, UPI, and cash on delivery (COD).</p>
+        </div>
+
+        <div class="faq">
+            <h3>3. How can I track my order?</h3>
+            <p>Go to "My Orders" in your account to track the real-time status of your order.</p>
+        </div>
+
+        <div class="faq">
+            <h3>4. What if I receive the wrong order?</h3>
+            <p>If you receive an incorrect order, contact our support team within 30 minutes for a resolution.</p>
+        </div>
+
+        <h2>Contact Us</h2>
+        <ul>
+            <li><strong>📞 Phone:</strong> <a href="tel:+91XXXXXXXXXX">+91-XXXXXXXXXX</a> <button class="call-btn" onclick="makeCall()">Click to Call</button></li>
+            <li><strong>📧 Email:</strong> <a href="mailto:support@foodsite.com">support@foodsite.com</a></li>
+            <li><strong>📍 Address:</strong>  himachal pradesh india</li>
+        </ul>
+
+        <h2>Submit a Query</h2>
+        <form id="support-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+
+        <p id="response-message"></p>
+
+        <a href="index.html" class="back-button">Go Back</a>
+    </div>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+            document.querySelector(".loader-wrapper").style.display = "none";
+            let content = document.querySelector(".content");
+            content.style.display = "block";
+            setTimeout(() => {
+                content.style.opacity = "1";
+            }, 100);
+        }, 1000);
+
+        loadProfile();
+    });
+
+
+
+
+
+        document.getElementById("support-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+
+    if (name && email && message) {
+        document.getElementById("response-message").innerText = "Thank you! Your query has been submitted.";
+        document.getElementById("support-form").reset();
+    } else {
+        document.getElementById("response-message").innerText = "Please fill all fields.";
+    }
+});
+
+function makeCall() {
+    window.location.href = "tel:+91XXXXXXXXXX";
+}
+    </script>
+</body>
+</html>

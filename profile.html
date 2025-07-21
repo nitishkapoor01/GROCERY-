@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Profile</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts for Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Loader Fullscreen */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Loader Styles */
+        .loader {
+            width: 100px;
+            height: 60px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader-text {
+            position: absolute;
+            top: 0;
+            color: #8A4AF3;
+            animation: text_713 1s ease both infinite;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #8A4AF3, 0 0 20px #B57EDC;
+        }
+
+        .load {
+            background: linear-gradient(45deg, #8A4AF3, #B57EDC);
+            border-radius: 50px;
+            display: block;
+            height: 20px;
+            width: 20px;
+            bottom: 0;
+            position: absolute;
+            transform: translateX(80px);
+            box-shadow: 0 0 15px #8A4AF3;
+            animation: loading_713 1.8s ease both infinite;
+        }
+
+        .load::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: rgba(181, 126, 220, 0.7);
+            border-radius: inherit;
+            animation: loading2_713 1.8s ease both infinite;
+        }
+
+        @keyframes text_713 {
+            0% { letter-spacing: 2px; transform: translateX(0px); }
+            50% { letter-spacing: 4px; transform: translateX(30px); }
+            100% { letter-spacing: 2px; transform: translateX(0px); }
+        }
+
+        @keyframes loading_713 {
+            0% { width: 20px; transform: translateX(0px); }
+            50% { width: 120%; transform: translateX(0px); }
+            100% { width: 20px; transform: translateX(80px); }
+        }
+
+        @keyframes loading2_713 {
+            0% { transform: translateX(0px); width: 20px; }
+            50% { transform: translateX(0%); width: 90%; }
+            100% { transform: translateX(0px); width: 20px; }
+        }
+
+        /* Page Styling */
+        body {
+            background: #F5F7FA; /* Soft gray background */
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            position: relative;
+            background-image: radial-gradient(circle, rgba(138, 74, 243, 0.1) 0%, transparent 70%);
+        }
+
+        .container {
+            max-width: 90%;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(138, 74, 243, 0.1);
+            padding: 40px;
+            text-align: center;
+            /* Removed border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15), 0 0 30px rgba(138, 74, 243, 0.3);
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #ffffff00;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+            border: 5px solid #b57edc00;
+            box-shadow: 0 0 35px rgba(181, 126, 220, 0);
+        }
+
+        .profile-info {
+            font-size: 22px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(138, 74, 243, 0.1);
+            padding: 30px;
+            /* Removed border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15), 0 0 30px rgba(138, 74, 243, 0.3);
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: 2px solid #B57EDC;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #8A4AF3;
+            box-shadow: 0 0 15px rgba(138, 74, 243, 0.3);
+            outline: none;
+        }
+
+        .btn-primary {
+            background: #8A4AF3;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            background: #B57EDC;
+        }
+
+        /* Content Fade-in */
+        .content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #backButton {
+            position: fixed;
+            top: 20px;
+            left: 15px;
+            background: #8A4AF3;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(138, 74, 243, 0.4);
+            transition: transform 0.3s ease, background 0.3s ease;
+            z-index: 20;
+        }
+
+        #backButton:hover {
+            transform: scale(1.1);
+            background: #B57EDC;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .profile-card, .form-box {
+                padding: 20px;
+            }
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            .profile-info {
+                font-size: 18px;
+            }
+            .form-control, .btn-primary {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader-wrapper">
+        <div class="loader">
+            <span class="loader-text">LOADING...</span>
+            <span class="load"></span>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <button id="backButton">←</button>
+
+    <!-- Page Content -->
+    <div class="container content">
+        <div class="row g-4 align-items-center">
+            <!-- Left Side: Bigger Profile Card -->
+            <div class="col-md-7">
+                <div class="profile-card">
+                    <img id="profilePic" src="https://bootdey.com/img/Content/avatar/avatar7.png" class="profile-img">
+                    <h2 id="namePreview" class="display-6">Your Name</h2>
+                    <p id="emailPreview" class="text-muted profile-info">your.email@example.com</p>
+                    <p class="profile-info"><strong>Phone:</strong> <span id="phonePreview">+91 XXXXXXXXXX</span></p>
+                    <p class="profile-info"><strong>Mobile:</strong> <span id="mobilePreview">+91 XXXXXXXXXX</span></p>
+                    <p class="profile-info"><strong>Address:</strong> <span id="addressPreview">Your Address</span></p>
+                </div>
+            </div>
+
+            <!-- Right Side: Profile Form -->
+            <div class="col-md-5">
+                <div class="form-box">
+                    <h3 class="mb-4 text-center fs-4">Edit Profile</h3>
+                    <form id="profileForm">
+                        <input type="text" id="nameInput" class="form-control mb-3" placeholder="Enter your name">
+                        <input type="email" id="emailInput" class="form-control mb-3" placeholder="Enter your email">
+                        <input type="text" id="phoneInput" class="form-control mb-3" placeholder="Enter phone">
+                        <select id="genderInput" class="form-control mb-3">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <input type="text" id="addressInput" class="form-control mb-3" placeholder="Enter address">
+                        <input type="file" id="imageInput" class="form-control mb-3">
+                        <button type="button" class="btn btn-primary w-100" onclick="saveProfile()">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <!-- Add SweetAlert Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                document.querySelector(".loader-wrapper").style.display = "none";
+                let content = document.querySelector(".content");
+                content.style.display = "block";
+                setTimeout(() => {
+                    content.style.opacity = "1";
+                }, 100);
+            }, 1000);
+
+            loadProfile();
+        });
+
+        function saveProfile() {
+            let name = document.getElementById("nameInput").value.trim();
+            let email = document.getElementById("emailInput").value.trim();
+            let phone = document.getElementById("phoneInput").value.trim();
+            let gender = document.getElementById("genderInput").value.trim();
+            let address = document.getElementById("addressInput").value.trim();
+
+            if (!name || !email || !phone || !gender || !address) {
+                Swal.fire({
+                    title: "Error!",
+                    text: "Please fill all fields!",
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
+                return;
+            }
+
+            localStorage.setItem("name", name);
+            localStorage.setItem("email", email);
+            localStorage.setItem("phone", phone);
+            localStorage.setItem("gender", gender);
+            localStorage.setItem("address", address);
+
+            document.getElementById("namePreview").innerText = name;
+            document.getElementById("emailPreview").innerText = email;
+            document.getElementById("phonePreview").innerText = phone;
+            document.getElementById("addressPreview").innerText = address;
+
+            Swal.fire({
+                title: "Saved Successfully!",
+                text: "Your profile is updated",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+        }
+
+        document.getElementById("imageInput").addEventListener("change", function (event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById("profilePic").src = reader.result;
+                localStorage.setItem("profilePic", reader.result);
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        });
+
+        document.getElementById("backButton").addEventListener("click", function() {
+            window.history.back();
+        });
+
+        function loadProfile() {
+            let name = localStorage.getItem("name") || "Your Name";
+            let email = localStorage.getItem("email") || "your.email@example.com";
+            let phone = localStorage.getItem("phone") || "+91 XXXXXXXXXX";
+            let address = localStorage.getItem("address") || "Your Address";
+            let profilePic = localStorage.getItem("profilePic") || "https://bootdey.com/img/Content/avatar/avatar7.png";
+
+            document.getElementById("namePreview").innerText = name;
+            document.getElementById("emailPreview").innerText = email;
+            document.getElementById("phonePreview").innerText = phone;
+            document.getElementById("addressPreview").innerText = address;
+            document.getElementById("profilePic").src = profilePic;
+
+            document.getElementById("nameInput").value = name !== "Your Name" ? name : "";
+            document.getElementById("emailInput").value = email !== "your.email@example.com" ? email : "";
+            document.getElementById("phoneInput").value = phone !== "+91 XXXXXXXXXX" ? phone : "";
+            document.getElementById("addressInput").value = address !== "Your Address" ? address : "";
+        }
+    </script>
+</body>
+</html>
